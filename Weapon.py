@@ -51,191 +51,54 @@ class Sword(Weapon):
         super().__init__(name, damage)
 
     def get_damage(self, armor):
-        if armor is Leather:
-            return self.damage - 1
-        elif armor is Without:
-            return self.damage - 0
-        elif armor is Chainmail:
-            return self.damage - 3
-        elif armor is Harness:
-            return self.damage - 5
-        elif armor is Diamond:
-            return self.damage - 7
-        elif armor is Infinity:
-            return self.damage - 9
-        elif armor is Universe:
-            return self.damage * 0.25
-        elif armor is Multiverse:
-            return self.damage * 0.1
-        else:
-            m = [1, 1, 1, 1, 1, 2, 2, 2, 3, 3]
-            return self.damage + m[randint(0, 9)]
+        self._get_damage(armor, 1, 0, 3, 5, 7, 9, 0.25, 0.1)
         
 
 class Braid(Weapon):
     def __init__(self, name = "Коса", damage = 50):
         super().__init__(name, damage)
     def get_damage(self, armor):
-        if armor is Leather:
-            return self.damage - 1
-        elif armor is Without:
-            return self.damage - 0
-        elif armor is Chainmail:
-            return self.damage - 3
-        elif armor is Harness:
-            return self.damage - 5
-        elif armor is Diamond:
-            return self.damage - 7
-        elif armor is Infinity:
-            return self.damage - 9
-        elif armor is Universe:
-            return self.damage * 0.25
-        elif armor is Multiverse:
-            return self.damage * 0.1
-        else:
-            m = [1, 1, 1, 1, 1, 2, 2, 2, 3, 3]
-            return self.damage + m[randint(0, 9)]
+        self._get_damage(armor, 0, 0, 2, 6, 8, 0.25, 0.1)
 
 class Stick(Weapon):
     def __init__(self, name = "Палка", damage = 24):
         super().__init__(name, damage)
     def get_damage(self, armor):
-        if armor is Leather:
-            return self.damage - 1
-        elif armor is Without:
-            return self.damage - 0
-        elif armor is Chainmail:
-            return self.damage - 3
-        elif armor is Harness:
-            return self.damage - 5
-        elif armor is Diamond:
-            return self.damage - 7
-        elif armor is Infinity:
-            return self.damage - 9
-        elif armor is Universe:
-            return self.damage * 0.25
-        elif armor is Multiverse:
-            return self.damage * 0.1
-        else:
-            m = [1, 1, 1, 1, 1, 2, 2, 2, 3, 3]
-            return self.damage + m[randint(0, 9)]
+        self._get_damage(armor, 1, 0 , 4, 7, 7, 9, 0.25, 0.1)
 
 class Hands(Weapon):
     def __init__(self, name = "Руки", damage = 14):
         super().__init__(name, damage)
     def get_damage(self, armor):
-        if armor is Leather:
-            return self.damage - 1
-        elif armor is Without:
-            return self.damage - 0
-        elif armor is Chainmail:
-            return self.damage - 3
-        elif armor is Harness:
-            return self.damage - 5
-        elif armor is Diamond:
-            return self.damage - 7
-        elif armor is Infinity:
-            return self.damage - 7
-        elif armor is Universe:
-            return self.damage * 0.25
-        elif armor is Multiverse:
-            return self.damage * 0.1
-        else:
-            m = [1, 1, 1, 1, 1, 2, 2, 2, 3, 3]
-            return self.damage + m[randint(0, 9)]
+        self._get_damage(armor, 1, 0, 4, 5, 7, 8, 0.25, 0.1)
 
 class DaggerWithPoison(Weapon):
     def __init__(self, name = "Кинжал с ядом", damage = 12):
         super().__init__(name, damage)
     def get_damage(self, armor):
-        if armor is Leather:
-            return self.damage - 1
-        elif armor is Without:
-            return self.damage - 0
-        elif armor is Chainmail:
-            return self.damage - 3
-        elif armor is Harness:
-            return self.damage - 5
-        elif armor is Diamond:
-            return self.damage - 7
-        elif armor is Infinity:
-            return self.damage - 9
-        elif armor is Universe:
-            return self.damage * 0.25
-        elif armor is Multiverse:
-            return self.damage * 0.1
-        else:
-            m = [1, 1, 1, 1, 1, 2, 2, 2, 3, 3]
-            return self.damage + m[randint(0, 9)]
+        self._get_damage(armor, 1, 0, 3, 5, 7, 9, 0.25, 0.1)
         
 class TrueTripleKatana(Weapon):
     def __init__(self, name = "Истинная тройная катана", damage = 100):
         super().__init__(name, damage)
 
     def get_damage(self, armor):
-        if armor is Leather:
-            return self.damage - 0
-        elif armor is Without:
-            return self.damage - 0
-        elif armor is Chainmail:
-            return self.damage - 0
-        elif armor is Harness:
-            return self.damage - 10
-        elif armor is Diamond:
-            return self.damage - 14
-        elif armor is Infinity:
-            return self.damage - 20
-        elif armor is Universe:
-            return self.damage * 0.25
-        else:
-            m = [1, 1, 1, 1, 1, 2, 2, 2, 3, 3]
-            return self.damage + m[randint(0, 9)]
+        self._get_damage(armor, 1, 0, 5, 3, 6, 7, 0.25, 0.1)
 
 class Gun(Weapon):
     def __init__(self, name = "Пистолет правды", damage = 140):
         super().__init__(name, damage)
     
     def get_damage(self, armor):
-        if armor is Leather:
-            return self.damage - 0
-        elif armor is Without:
-            return self.damage - 0
-        elif armor is Chainmail:
-            return self.damage - 0
-        elif armor is Harness:
-            return self.damage - 10
-        elif armor is Diamond:
-            return self.damage - 14
-        elif armor is Infinity:
-            return self.damage - 20
-        elif armor is Universe:
-            return self.damage * 0.25
-        else:
-            m = [1, 1, 1, 1, 1, 2, 2, 2, 3, 3]
-            return self.damage + m[randint(0, 9)]
-        
+        self._get_damage(armor, 1, 0, 3, 5, 7, 9, 0.25, 0.1)
+
+
 class Minigun(Weapon):
     def __init__(self, name = "Пулемет ненависти", damage = 170):
         super().__init__(name, damage)
     
     def get_damage(self, armor):
-        if armor is Leather:
-            return self.damage - 1
-        elif armor is Without:
-            return self.damage - 0
-        elif armor is Chainmail:
-            return self.damage - 3
-        elif armor is Harness:
-            return self.damage - 5
-        elif armor is Diamond:
-            return self.damage - 7
-        elif armor is Infinity:
-            return self.damage - 9
-        elif armor is Universe:
-            return self.damage * 0.25
-        else:
-            m = [1, 1, 1, 1, 1, 2, 2, 2, 3, 3]
-            return self.damage + m[randint(0, 9)]
+        self._get_damage(armor, 1, 0, 3, 5, 7, 9, 0.25, 0.1)
         
 
 
