@@ -49,5 +49,8 @@ class Universe(Armor):
     def __init__(self, name = "Вселенская", protection = 250):
         super().__init__(name, protection)
 
+class Multiverse(Armor):
+    def __init__(self, name = 'Мультивселенская', protection = 300):
+        super().__init__(name, protection)
 
     

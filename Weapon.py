@@ -1,10 +1,31 @@
-from Armor import Without, Leather, Harness, Chainmail, Cursed, Diamond, Infinity, Universe
+from Armor import Without, Leather, Harness, Chainmail, Cursed, Diamond, Infinity, Universe, Multiverse
 from random import randint
 
 class Weapon:
     def __init__(self, name: str, damage: int):
         self.__name = name
         self.__damage = damage
+
+    def _get_damage(self, armor, l, w, ch, h, d, i, u, mv):
+        if armor is Leather:
+            return self.damage - l
+        elif armor is Without:
+            return self.damage - w
+        elif armor is Chainmail:
+            return self.damage - ch
+        elif armor is Harness:
+            return self.damage - h
+        elif armor is Diamond:
+            return self.damage - d
+        elif armor is Infinity:
+            return self.damage - i
+        elif armor is Universe:
+            return self.damage * u
+        elif armor is Multiverse:
+            return self.damage * mv
+        else:
+            m = [1, 1, 1, 1, 1, 2, 2, 2, 3, 3]
+            return self.damage + m[randint(0, 9)]
 
     
     def get_armor(self, armor):
@@ -23,23 +44,8 @@ class Spear(Weapon):
         super().__init__(name, damage)
 
     def get_damage(self, armor):
-        if armor is Leather:
-            return self.damage - 1
-        elif armor is Without:
-            return self.damage - 0
-        elif armor is Chainmail:
-            return self.damage - 3
-        elif armor is Harness:
-            return self.damage - 5
-        elif armor is Diamond:
-            return self.damage - 7
-        elif armor is Infinity:
-            return self.damage - 9
-        elif armor is Universe:
-            return self.damage * 0.25
-        else:
-            m = [1, 1, 1, 1, 1, 2, 2, 2, 3, 3]
-            return self.damage + m[randint(0, 9)]
+        self._get_damage(armor, 1, 0, 3, 5, 7, 9, 0.25, 0.1)
+        
 class Sword(Weapon):
     def __init__(self, name = "Меч", damage =  30):
         super().__init__(name, damage)
@@ -59,6 +65,8 @@ class Sword(Weapon):
             return self.damage - 9
         elif armor is Universe:
             return self.damage * 0.25
+        elif armor is Multiverse:
+            return self.damage * 0.1
         else:
             m = [1, 1, 1, 1, 1, 2, 2, 2, 3, 3]
             return self.damage + m[randint(0, 9)]
@@ -82,6 +90,8 @@ class Braid(Weapon):
             return self.damage - 9
         elif armor is Universe:
             return self.damage * 0.25
+        elif armor is Multiverse:
+            return self.damage * 0.1
         else:
             m = [1, 1, 1, 1, 1, 2, 2, 2, 3, 3]
             return self.damage + m[randint(0, 9)]
@@ -104,6 +114,8 @@ class Stick(Weapon):
             return self.damage - 9
         elif armor is Universe:
             return self.damage * 0.25
+        elif armor is Multiverse:
+            return self.damage * 0.1
         else:
             m = [1, 1, 1, 1, 1, 2, 2, 2, 3, 3]
             return self.damage + m[randint(0, 9)]
@@ -126,6 +138,8 @@ class Hands(Weapon):
             return self.damage - 7
         elif armor is Universe:
             return self.damage * 0.25
+        elif armor is Multiverse:
+            return self.damage * 0.1
         else:
             m = [1, 1, 1, 1, 1, 2, 2, 2, 3, 3]
             return self.damage + m[randint(0, 9)]
@@ -148,6 +162,8 @@ class DaggerWithPoison(Weapon):
             return self.damage - 9
         elif armor is Universe:
             return self.damage * 0.25
+        elif armor is Multiverse:
+            return self.damage * 0.1
         else:
             m = [1, 1, 1, 1, 1, 2, 2, 2, 3, 3]
             return self.damage + m[randint(0, 9)]
