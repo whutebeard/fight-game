@@ -68,7 +68,7 @@ class Warrior:
         
 
     def take_damage(self, weapon):
-            total_damage = weapon.get_damage(self.armor)
+            total_damage = weapon._get_damage(self.armor, 1, 0, 3, 5, 7, 9, 0.25, 0.1)
 
             self.health -= total_damage
 

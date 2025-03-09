@@ -58,7 +58,7 @@ class Braid(Weapon):
     def __init__(self, name = "Коса", damage = 50):
         super().__init__(name, damage)
     def get_damage(self, armor):
-        self._get_damage(armor, 0, 0, 2, 6, 8, 0.25, 0.1)
+        self._get_damage(armor, 0, 0, 2, 6, 8, 10, 0.25, 0.1)
 
 class Stick(Weapon):
     def __init__(self, name = "Палка", damage = 24):

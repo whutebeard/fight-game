@@ -1,4 +1,5 @@
 import os
+import os.path
 import pathlib
 from random import randint
 from time import sleep
@@ -12,7 +13,9 @@ print('------------------')
 print(os.getcwd()) # Путь к месту запуска
 print(pathlib.Path(__file__).parent.resolve()) # Путь к папке, где лежит этот скрипт
 print('------------------')
-a = open(str(pathlib.Path(__file__).parent.resolve()) + '\\balance.txt', 'r')
+
+
+
 
 ALL_WEAPONS_COUNT = 9
 ALL_ARMORS_COUNT = 8
@@ -61,7 +64,55 @@ if __name__ == '__main__':
         else:
             unit_b.make_attack(enemy=unit_a)
 
+    
+
     if unit_a.is_alive:
-        print(f'{unit_a.name} в кровавой схватке победил {unit_b.name}, у него осталось {unit_a.health} хп\n Теперь у {unit_a.name}  денег\n У {unit_a.name} {unit_a.level} уровень ')
+        if os.path.isfile('money_1.txt') is False:
+            a = open('money_1.txt', 'w+')
+            a.write(str(0))
+            a.close()
+            b = open('money_1.txt')
+            c = b.read()
+            b.close()
+            b = open('money_1.txt')
+            v = int(c) + 500
+            v = str(v)
+            b.write(str(v))
+            b.close()
+            n = open('money_1.txt')
+        elif os.path.isfile('money_1.txt') is True:
+            b = open('money_1.txt')
+            c = b.read()
+            b.close()
+            b = open('money_1.txt', 'w+')
+            v = int(c) + 500
+            v = str(v)
+            b.write(str(v))
+            b.close()
+            n = open('money_1.txt')
+        print(f'{unit_a.name} в кровавой схватке победил {unit_b.name}, у него осталось {unit_a.health} хп\n Теперь у {unit_a.name} {n.read()}  денег\n У {unit_a.name} {unit_a.level} уровень ')
     else:
-        print(f'{unit_b.name} в кровавой схватке победил {unit_a.name}, у него осталось {unit_b.health} хп\n Теперь у {unit_b.name}  денег\n У {unit_b.name} {unit_b.level} уровень')
+        if os.path.isfile('money_2.txt') is False:
+            a = open('money_2.txt', 'w+')
+            a.write(str(0))
+            a.close
+            b = open('money_2.txt', 'r')
+            c = b.read()
+            b.close()
+            b = open('money_2.txt', 'w+')
+            v = int(c) + 500
+            v = str(v)
+            b.write(v)
+            b.close()
+            n = open('money_2txt')
+        elif os.path.isfile('money_2.txt') is True:
+            b = open('money_2.txt')
+            c = b.read()
+            b.close()
+            b = open('money_2.txt', 'w+')
+            v = int(c) + 500
+            v = str(v)
+            b.write(v)
+            b.close()
+            n = open('money_2.txt')
+        print(f'{unit_b.name} в кровавой схватке победил {unit_a.name}, у него осталось {unit_b.health} хп\n Теперь у {unit_b.name} {n.read()} денег\n У {unit_b.name} {unit_b.level} уровень')
