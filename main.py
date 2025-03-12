@@ -3,11 +3,17 @@ import os.path
 import pathlib
 from random import randint
 from time import sleep
+import json
+
 
 from Weapon import Spear, TrueTripleKatana, DaggerWithPoison, Stick, Sword, Gun, Minigun, Braid, Hands
 from Armor import Leather, Without, Diamond, Harness, Chainmail, Cursed, Universe, Infinity
 from Wizard import Wizard
 from Wariorr import Warrior
+from change_money import n, n_1
+
+
+
 
 print('------------------')
 print(os.getcwd()) # Путь к месту запуска
@@ -23,12 +29,19 @@ ALL_ARMORS_COUNT = 8
 
 def provide_warrior(unit: Warrior):
     all_weapons = [Spear(), TrueTripleKatana(), DaggerWithPoison(), Stick(), Sword(), Gun(), Minigun(), Braid(), Hands()]
-    index = randint(0, ALL_WEAPONS_COUNT - 1)
-    unit.add_weapon(all_weapons[index])
+    a = input('Какое оружие вы хотите выбрать?\nНапишите его название тут\n')
+    for i in range(len(all_weapons)):
+        if a == all_weapons[i].name:
+            unit.add_weapon(all_weapons[i])
+        break
 
-    all_armors = [Leather, Without(), Diamond(), Harness(), Chainmail(), Cursed(), Universe(), Infinity()]
-    index = randint(0, ALL_ARMORS_COUNT - 1)
-    unit.add_armor(all_armors[index])
+
+    all_armors = [Leather(), Without(), Diamond(), Harness(), Chainmail(), Cursed(), Universe(), Infinity()]
+    b = input('Какое броню вы хотите взять?\nНапишите его название тут\n')
+    for i in range(len(all_armors)):
+        if b == all_armors[i].name:
+            unit.add_armor(all_armors[i])
+            break
 
     unit.get_total_protection()
 
@@ -67,52 +80,8 @@ if __name__ == '__main__':
     
 
     if unit_a.is_alive:
-        if os.path.isfile('money_1.txt') is False:
-            a = open('money_1.txt', 'w+')
-            a.write(str(0))
-            a.close()
-            b = open('money_1.txt')
-            c = b.read()
-            b.close()
-            b = open('money_1.txt')
-            v = int(c) + 500
-            v = str(v)
-            b.write(str(v))
-            b.close()
-            n = open('money_1.txt')
-        elif os.path.isfile('money_1.txt') is True:
-            b = open('money_1.txt')
-            c = b.read()
-            b.close()
-            b = open('money_1.txt', 'w+')
-            v = int(c) + 500
-            v = str(v)
-            b.write(str(v))
-            b.close()
-            n = open('money_1.txt')
-        print(f'{unit_a.name} в кровавой схватке победил {unit_b.name}, у него осталось {unit_a.health} хп\n Теперь у {unit_a.name} {n.read()}  денег\n У {unit_a.name} {unit_a.level} уровень ')
+        unit_a.__money = n.read()
+        print(f'{unit_a.name} в кровавой схватке победил {unit_b.name}, у него осталось {unit_a.health} хп\n Теперь у {unit_a.name} {unit_a.__money}  денег\n У {unit_a.name}  уровень ')
     else:
-        if os.path.isfile('money_2.txt') is False:
-            a = open('money_2.txt', 'w+')
-            a.write(str(0))
-            a.close
-            b = open('money_2.txt', 'r')
-            c = b.read()
-            b.close()
-            b = open('money_2.txt', 'w+')
-            v = int(c) + 500
-            v = str(v)
-            b.write(v)
-            b.close()
-            n = open('money_2txt')
-        elif os.path.isfile('money_2.txt') is True:
-            b = open('money_2.txt')
-            c = b.read()
-            b.close()
-            b = open('money_2.txt', 'w+')
-            v = int(c) + 500
-            v = str(v)
-            b.write(v)
-            b.close()
-            n = open('money_2.txt')
-        print(f'{unit_b.name} в кровавой схватке победил {unit_a.name}, у него осталось {unit_b.health} хп\n Теперь у {unit_b.name} {n.read()} денег\n У {unit_b.name} {unit_b.level} уровень')
+        unit_b.__money = n_1.read()
+        print(f'{unit_b.name} в кровавой схватке победил {unit_a.name}, у него осталось {unit_b.health} хп\n Теперь у {unit_b.name} {unit_b.__money} денег\n У {unit_b.name}  уровень')
