@@ -41,6 +41,7 @@ def provide_warrior(unit: Warrior):
     for i in range(len(all_armors)):
         if b == all_armors[i].name:
             unit.add_armor(all_armors[i])
+            
             break
 
     unit.get_total_protection()
