@@ -10,7 +10,7 @@ from Weapon import Spear, TrueTripleKatana, DaggerWithPoison, Stick, Sword, Gun,
 from Armor import Leather, Without, Diamond, Harness, Chainmail, Cursed, Universe, Infinity
 from Wizard import Wizard
 from Wariorr import Warrior
-from change_money import n, n_1
+
 
 
 
@@ -26,14 +26,16 @@ print('------------------')
 ALL_WEAPONS_COUNT = 9
 ALL_ARMORS_COUNT = 8
 
-
 def provide_warrior(unit: Warrior):
+
     all_weapons = [Spear(), TrueTripleKatana(), DaggerWithPoison(), Stick(), Sword(), Gun(), Minigun(), Braid(), Hands()]
     a = input('Какое оружие вы хотите выбрать?\nНапишите его название тут\n')
     for i in range(len(all_weapons)):
-        if a == all_weapons[i].name:
-            unit.add_weapon(all_weapons[i])
-        break
+            if a == all_weapons[i].name:
+                unit.add_weapon(all_weapons[i])
+
+       
+            break
 
 
     all_armors = [Leather(), Without(), Diamond(), Harness(), Chainmail(), Cursed(), Universe(), Infinity()]
@@ -41,7 +43,6 @@ def provide_warrior(unit: Warrior):
     for i in range(len(all_armors)):
         if b == all_armors[i].name:
             unit.add_armor(all_armors[i])
-            
             break
 
     unit.get_total_protection()
@@ -55,10 +56,12 @@ if __name__ == '__main__':
     name_a = 'Ратмир'
     name_b = 'Карим'
 
-    unit_a = Warrior(name=name_a, level=1, need_xp=200, give_xp=300)
+    
+
+    unit_a = Warrior(name=name_a, need_xp=200, give_xp=300)
     provide_warrior(unit_a)
 
-    unit_b = Warrior(name=name_b, level=1, need_xp=200, give_xp=300)
+    unit_b = Warrior(name=name_b, need_xp=200, give_xp=300)
     provide_warrior(unit_b)
 
     print(f'{unit_a.name} - {unit_a.health}\nБроня: {unit_a.armor.name}\nОружие: {unit_a.weapon.name}\n')
@@ -81,8 +84,10 @@ if __name__ == '__main__':
     
 
     if unit_a.is_alive:
-        unit_a.__money = n.read()
-        print(f'{unit_a.name} в кровавой схватке победил {unit_b.name}, у него осталось {unit_a.health} хп\n Теперь у {unit_a.name} {unit_a.__money}  денег\n У {unit_a.name}  уровень ')
+        unit_a.set_money('money_1.txt')
+        unit_a.set_level('level_1.txt', 'need_xp_1.txt', 'give_xp_1.txt')
+        print(f'{unit_a.name} в кровавой схватке победил {unit_b.name}, у него осталось {unit_a.health} хп\n Теперь у {unit_a.name} {unit_a.money}  денег\n У {unit_a.name} {unit_a.level}  уровень ')
     else:
-        unit_b.__money = n_1.read()
-        print(f'{unit_b.name} в кровавой схватке победил {unit_a.name}, у него осталось {unit_b.health} хп\n Теперь у {unit_b.name} {unit_b.__money} денег\n У {unit_b.name}  уровень')
+        unit_b.set_money('money_2.txt')
+        unit_b.set_level('level_2.txt', 'need_xp_2.txt', 'give_xp_2.txt')
+        print(f'{unit_b.name} в кровавой схватке победил {unit_a.name}, у него осталось {unit_b.health} хп\n Теперь у {unit_b.name} {unit_b.money} денег\n У {unit_b.name} {unit_b.level} уровень')
