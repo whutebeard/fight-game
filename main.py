@@ -3,7 +3,7 @@ import os.path
 import pathlib
 from random import randint
 from time import sleep
-import json
+import keyword
 
 
 from Weapon import Spear, TrueTripleKatana, DaggerWithPoison, Stick, Sword, Gun, Minigun, Braid, Hands
@@ -33,17 +33,23 @@ def provide_warrior(unit: Warrior):
     for i in range(len(all_weapons)):
             if a == all_weapons[i].name:
                 unit.add_weapon(all_weapons[i])
-
-       
+                if unit.weapon.cost < unit.money:
+                    unit.weapon = unit.weapon
+                else:
+                    unit.weapon = all_weapons[ALL_WEAPONS_COUNT-1]       
             break
 
 
-    all_armors = [Leather(), Without(), Diamond(), Harness(), Chainmail(), Cursed(), Universe(), Infinity()]
+    all_armors = [Leather(),  Infinity(), Diamond(), Harness(), Chainmail(), Cursed(), Universe(), Without()]
     b = input('Какое броню вы хотите взять?\nНапишите его название тут\n')
     for i in range(len(all_armors)):
         if b == all_armors[i].name:
-            unit.add_armor(all_armors[i])
-            break
+                unit.add_armor(all_armors[i])
+                if unit.armor.cost < unit.money:
+                     unit.armor = unit.armor
+                else:
+                    unit.armor = all_armors[ALL_ARMORS_COUNT-1]
+                break
 
     unit.get_total_protection()
 

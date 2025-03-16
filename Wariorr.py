@@ -5,8 +5,8 @@ class Warrior:
     def __init__(self, name: str,  need_xp: int, give_xp: int, money = 0, hp = 200, level = 1 ):
         self.__name = name
         self.__hp = hp
-        self.__armor = None
-        self.__weapon = None
+        self.armor = None
+        self.weapon = None
         self.level = level
         self.need_xp = need_xp
         self.give_xp = give_xp
@@ -33,13 +33,7 @@ class Warrior:
     def is_alive(self):
         return self.health > 0
     
-    @property
-    def armor(self):
-        return self.__armor
-    
-    @property
-    def weapon(self):
-        return self.__weapon
+
     
 
 
@@ -47,10 +41,10 @@ class Warrior:
     
     
     def add_weapon(self, weapon):
-        self.__weapon = weapon
+        self.weapon = weapon
 
     def add_armor(self, armor):
-        self.__armor = armor
+        self.armor = armor
 
     def set_money(self, file):
             if os.path.isfile(file) is False:
@@ -185,10 +179,14 @@ class Warrior:
 
             self.health -= total_damage
 
-
+    def passive(self, enemy):
+        if self.health < 100:
+            enemy.weapon.damage *= 0.5
+        
+              
 
     def get_total_protection(self):
-        self.health  += self.__armor.protection  
+        self.health  += self.armor.protection  
 
 
             

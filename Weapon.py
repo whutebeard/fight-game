@@ -72,7 +72,7 @@ class Stick(Weapon):
         self._get_damage(armor, 1, 0 , 4, 7, 7, 9, 0.25, 0.1)
 
 class Hands(Weapon):
-    def __init__(self, name = "Руки", damage = 14, cost = 1000):
+    def __init__(self, name = "Руки", damage = 14, cost = 0):
         super().__init__(name, damage, cost)
     def get_damage(self, armor):
         self._get_damage(armor, 1, 0, 4, 5, 7, 8, 0.25, 0.1)
